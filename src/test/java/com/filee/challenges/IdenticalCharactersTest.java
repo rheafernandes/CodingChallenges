@@ -6,22 +6,22 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class IdenticalCharactersTest {
-    IdenticalCharacters identicalCharacters = null;
+    private static IdenticalCharacters identicalCharacters = null;
 
     @BeforeClass
-    public void setUp() {
+    public static void setUp() {
         identicalCharacters = new IdenticalCharacters();
     }
 
     @AfterClass
-    public void tearDown() {
+    public static void tearDown() {
         identicalCharacters = null;
     }
 
     @Test
     public void testNullString() throws Exception {
         String actual = identicalCharacters.getUpdatedString(null, 0);
-        Assert.assertNull(actual);
+        Assert.assertEquals("", actual);
     }
 
     @Test
@@ -46,6 +46,6 @@ public class IdenticalCharactersTest {
     @Test
     public void testStringFromRandomStartPoint() throws Exception {
         String actual = identicalCharacters.getUpdatedString("goodaaafteernoon", 5);
-        Assert.assertEquals("goodaa*afte*erno*on", actual);
+        Assert.assertEquals("a*afte*erno*on", actual);
     }
 }
